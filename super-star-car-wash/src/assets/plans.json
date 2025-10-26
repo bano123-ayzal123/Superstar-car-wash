@@ -1,0 +1,5 @@
+[
+  {"id":"silver","name":"Silver","monthly":799,"perks":["2 washes/month","Exterior only","Priority lane"]},
+  {"id":"gold","name":"Gold","monthly":1199,"perks":["4 washes/month","Foam + Wax","Tire shine"]},
+  {"id":"platinum","name":"Platinum","monthly":1499,"perks":["6 washes/month","All services","Family add-on"]}
+]
