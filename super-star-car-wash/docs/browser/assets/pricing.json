@@ -1,0 +1,5 @@
+[
+  {"id":"basic","name":"Quick Exterior","price":350,"includes":["High pressure wash","Spot-free rinse","Air dry"],"badge":"Popular"},
+  {"id":"premium","name":"Foam + Wax","price":600,"includes":["Foam bath","Wax coat","Tire shine","Air dry"]},
+  {"id":"suv","name":"SUV Exterior","price":700,"includes":["High pressure wash","Wax coat","Air dry"]}
+]

@@ -1,0 +1,5 @@
+[
+  {"id":"hp-wash","title":"High Pressure Wash","description":"Powerful water jets remove dirt without touching paint.","features":["Pre-rinse","Spot-free rinse","Blow dry"]},
+  {"id":"foam-wash","title":"Foam Bath","description":"Thick foam encapsulates dust for swirl-free cleaning.","features":["pH-balanced foam","Microfiber finish","Rinse & Dry"]},
+  {"id":"under-chassis","title":"Under-Chassis Wash","description":"Flush out mud and road grime from your car's underbody.","features":["High-jet nozzles","Rust-safe","Add-on friendly"]}
+]
