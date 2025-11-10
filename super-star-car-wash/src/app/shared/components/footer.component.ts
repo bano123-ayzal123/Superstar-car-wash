@@ -19,7 +19,8 @@ template: `
 </div>
 <div class="col-md-6 text-md-end">
 <div *ngIf="site">
-<a [href]="'tel:'+site.phone" class="btn btn-outline-light btn-sm me-2">Call {{site.phone}}</a>
+<a [href]="'tel:'+site.phone" class="btn btn-outline-light btn-sm me-2">📞 {{site.phone}}</a>
+<a [href]="'email:'+site.email" class="btn btn-outline-light btn-sm me-2">📩 {{site.email}}</a>
 <a routerLink="/booking" class="btn btn-warning btn-sm">Book Now</a>
 </div>
 </div>

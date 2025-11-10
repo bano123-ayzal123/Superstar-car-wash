@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/">⭐ Super Star Car Wash</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navContent"
+      aria-controls="navContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a routerLink="/services" routerLinkActive="active" class="nav-link">Services</a></li>
+        <li class="nav-item"><a routerLink="/pricing" routerLinkActive="active" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a routerLink="/membership" routerLinkActive="active" class="nav-link">Membership</a></li>
+        <li class="nav-item"><a routerLink="/locations" routerLinkActive="active" class="nav-link">Locations</a></li>
+        <li class="nav-item"><a routerLink="/booking" routerLinkActive="active" class="nav-link">Book Now</a></li>
+        <li class="nav-item"><a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a></li>
+      </ul>
+
+    <!-- Right-side auth area -->
+<div class="ms-lg-3 d-flex align-items-center gap-2">
+
+  <!-- ✅ Logged in -->
+  <ng-container *ngIf="(auth.user$ | async) as user; else guest">
+    <div class="user-menu">
+      <button
+        type="button"
+        class="btn btn-outline-light px-3 d-flex align-items-center gap-2"
+        (click)="toggleMenu($event)"
+        [attr.aria-expanded]="menuOpen"
+        aria-haspopup="true"
+      >
+        Hi, {{ user.name }} <span class="dropdown-caret">▾</span>
+      </button>
+
+      <!-- Angular-driven menu (no Bootstrap JS) -->
+      <ul class="menu" *ngIf="menuOpen" (click)="$event.stopPropagation()">
+        <li><a class="dropdown-item" routerLink="/account">My Account</a></li>
+        <li><a class="dropdown-item" routerLink="/orders">My Washes</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+          <button type="button" class="btn btn-outline-light d-flex "(click)="logout()">Logout</button>
+        </li>
+      </ul>
+    </div>
+
+    <a routerLink="/booking" class="btn btn-warning fw-semibold">Book a Wash</a>
+  </ng-container>
+
+  <!-- 🚪 Logged out -->
+  <ng-template #guest>
+    <a routerLink="/login" class="btn btn-outline-light">Login</a>
+    <a routerLink="/register" class="btn btn-light fw-semibold">Register</a>
+    <a routerLink="/booking" class="btn btn-warning fw-semibold d-none d-lg-inline-block">Book a Wash</a>
+  </ng-template>
+</div>
+    </div>
+  </div>
+</nav>

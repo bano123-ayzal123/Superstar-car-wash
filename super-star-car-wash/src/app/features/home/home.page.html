@@ -1,0 +1,158 @@
+<!-- HERO -->
+<section class="hero-wrap" style="background-image: url('/assets/images/foamwash-bg.png');">
+  <div class="overlay"></div>
+  <div class="container hero-grid">
+
+    <!-- LEFT: AUTO SLIDER -->
+    <div class="hero-media">
+      <div
+        class="slider"
+        (mouseenter)="pause()"
+        (mouseleave)="play()"
+        role="region"
+        aria-label="Super Star Car Wash highlights"
+      >
+        <div
+          class="track"
+          [style.transform]="'translateX(' + (-currentIndex * 100) + '%)'"
+          [style.transition]="transition"
+        >
+          <div class="panel" *ngFor="let s of slides">
+            <img [src]="s.src" [alt]="s.alt" loading="eager" decoding="async" />
+          </div>
+        </div>
+
+        <button class="nav prev" type="button" (click)="prev()" aria-label="Previous slide">‹</button>
+        <button class="nav next" type="button" (click)="next()" aria-label="Next slide">›</button>
+
+        <div class="dots" role="tablist">
+          <button
+            *ngFor="let s of slides; let i = index"
+            class="dot"
+            [class.active]="i === dotIndex"
+            (click)="goTo(i)"
+            type="button"
+          ></button>
+        </div>
+
+        <div *ngIf="!imagesReady"
+             style="position:absolute;inset:auto 6% 7% 6%;padding:.6rem .9rem;border-radius:12px;background:rgba(0,0,0,.45);color:#fff;">
+          Loading highlights… (check <code>/assets/images/</code> paths if this persists)
+        </div>
+      </div>
+
+      <!-- BELOW-SLIDER CAPTION (safe navigation to avoid SSR errors) -->
+      <div class="below-caption" *ngIf="slides?.length">
+        <h6 class="mb-1">{{ slides[currentIndex]?.title }}</h6>
+        <p class="mb-0">{{ slides[currentIndex]?.copy }}</p>
+      </div>
+
+      <div class="hero-hashtag">#superstarcarwash</div>
+    </div>
+
+    <!-- RIGHT: COPY -->
+    <div class="hero-copy text-white">
+      <h1 class="display-5 fw-bold mt-3">Premium Touchless Car Wash</h1>
+      <p class="lead text-light mt-2">First-time-in-Hyderabad experience — shine in minutes, safe for paint, zero contact.</p>
+      <div class="mt-3 d-flex flex-wrap align-items-center gap-3">
+        <a routerLink="/booking" class="btn btn-primary btn-lg">Book Now</a>
+        <a routerLink="/membership" class="btn btn-outline-light btn-lg">Membership</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>🚗 Exterior Wash</span><span>🧽 Foam & Wax</span><span>🚙 SUV Premium Wash</span>
+      <span>🛞 Under-Chassis Wash</span><span>✨ Interior Vacuuming</span>
+      <span>🚗 Exterior Wash</span><span>🧽 Foam & Wax</span><span>🚙 SUV Premium Wash</span>
+      <span>🛞 Under-Chassis Wash</span><span>✨ Interior Vacuuming</span>
+    </div>
+  </div>
+</section>
+
+<!-- INLINE CTA ABOVE SERVICES -->
+<section class="cta-inline">
+  <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+    <h5 class="mb-0 fw-semibold">Ready for a showroom shine in minutes?</h5>
+    <div class="d-flex gap-2">
+      <a routerLink="/booking" class="btn btn-light">Book a Slot</a>
+      <a routerLink="/contact" class="btn btn-outline-light">Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR SERVICES (Super Skin) -->
+<section class="super-section">
+  <div class="container">
+    <div class="section-box">
+      <h2 class="super-title">Our Services</h2>
+      <p class="super-sub">High-pressure wash, foam bath, under-chassis wash & more</p>
+
+      <div class="super-grid">
+        <div class="col" *ngFor="let s of services; let i = index">
+          <div class="super-card" [ngClass]="variantFor(i)">
+            <h5>{{ s.title }}</h5>
+            <p class="card-text">{{ s.description }}</p>
+            <ul>
+              <li *ngFor="let f of s.features">{{ f }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR PLANS (Super Plans) -->
+<section class="super-section">
+  <div class="container">
+    <div class="section-box">
+      <h2 class="super-title">Super Plans</h2>
+      <p class="super-sub">Transparent pricing, premium results</p>
+
+      <div class="super-grid">
+        <div class="col" *ngFor="let p of pricing; let i = index">
+          <div class="super-card" [ngClass]="variantFor(i)">
+            <h5>{{ p.name }}</h5>
+            <div class="price-line">{{ p.price | currency:'INR' }}</div>
+            <ul><li *ngFor="let it of p.includes">{{ it }}</li></ul>
+            <a routerLink="/booking" class="btn-outline-white mt-2">Book {{ p.name }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP PLANS -->
+<section class="super-section">
+  <div class="container">
+    <div class="section-box">
+      <h2 class="super-title">Membership Plans</h2>
+      <p class="super-sub">Wash more, save more</p>
+
+      <div class="super-grid">
+        <div class="col" *ngFor="let m of plans; let i = index">
+          <div class="super-card" [ngClass]="variantFor(i)">
+            <h5>{{ m.name }}</h5>
+            <div class="price-line">{{ m.monthly | currency:'INR' }} <small>/mo</small></div>
+            <ul><li *ngFor="let perk of m.perks">{{ perk }}</li></ul>
+            <a routerLink="/membership" class="btn-outline-white mt-2">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP MID-RIGHT -->
+<a class="whatsapp-fab"
+   href="https://wa.me/919666959311?text=Hi%20Super%20Star%20Car%20Wash%20%E2%80%94%20I%27d%20like%20to%20book%20a%20wash"
+   target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+    <path d="M19.1 17.4c-.3-.1-1-.4-1.1-.4s-.3-.1-.5.2-.6.7-.7.8-.3.2-.6.1c-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.7.2-.2.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.5-1.2-.7-1.6-.2-.4-.4-.3-.5-.3h-.4c-.1 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.1 3.1c.1.2 2 3.1 4.8 4.3.7.3 1.3.5 1.8.6.8.2 1.6.2 2.2.1.7-.1 2.1-.9 2.4-1.8.3-.9.3-1.7.2-1.8-.1-.1-.3-.2-.6-.3z" fill="#fff"/>
+    <path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.8L4 29l8.4-1.5C14 28.5 15 29 16 29c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 22.1c-1 0-2-.2-2.9-.6l-.2-.1-5 .9.9-4.9-.1-.2C7.2 19.2 6.9 17.1 6.9 15 6.9 9.9 11 5.9 16.1 5.9S25.3 9.9 25.3 15 21.2 25.1 16 25.1z" fill="#fff"/>
+  </svg>
+</a>

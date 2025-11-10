@@ -4,6 +4,7 @@ import { ApiService } from '../../core/services/api.service';
 import { Location } from '../../core/models';
 import { SectionTitleComponent } from '../../shared/components/section-title.component';
 import { SeoService } from '../../core/services/seo.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -29,7 +30,7 @@ import { SeoService } from '../../core/services/seo.service';
     </div>
   </section>
   `,
-  imports: [SectionTitleComponent, NgFor]
+  imports: [CommonModule,SectionTitleComponent, NgFor]
 })
 export class LocationsPage implements OnInit {
   api = inject(ApiService); seo = inject(SeoService);

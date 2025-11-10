@@ -1,0 +1,188 @@
+/* ===== HERO ===== */
+/* Added background image + overlay + optional slow zoom */
+.hero-wrap {
+  /* 🔁 change to your asset path */
+  --hero-bg: url('/assets/images/foamwash-bg.png');
+
+  position: relative;
+  background: #fff;
+  background-image: var(--hero-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 2rem;
+  overflow: hidden;
+
+  /* subtle parallax-like zoom; remove if not desired */
+  animation: heroZoom 24s ease-in-out infinite alternate;
+}
+
+/* soft dark overlay to increase contrast */
+.hero-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 700px at 20% -200px, rgba(0,0,0,.25), transparent 60%),
+    linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes heroZoom {
+  from { background-size: 102%; }
+  to   { background-size: 108%; }
+}
+
+/* keep layout but ensure it layers above overlay */
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid; grid-template-columns: 0.9fr 1.1fr; align-items: center; gap: 2rem; min-height: 520px;
+  @media (max-width: 992px){ grid-template-columns: 1fr; text-align: center; }
+}
+
+/* Make hero text readable on image */
+.hero-copy h1{ color:#fff; font-size:2.3rem; text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.hero-copy p { color: rgba(255,255,255,.9); font-size:1.15rem; }
+
+/* Optional: make outline button visible on dark bg */
+.btn-outline-light {
+  border: 2px solid #fff; color:#fff; background: transparent;
+}
+.btn-outline-light:hover { background:#fff; color:#111; }
+
+/* Slider 
+.hero-media { display: grid; place-items: center; }*/
+
+.hero-media {
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.slider {
+  position: absolute;
+  right: 84%;          /* pushes it toward the left — adjust between 50–60% as needed */
+  top: -101%;            /* vertical alignment with text/sign */
+  transform: translate(50%, -50%); /* centers circle visually */
+  width: 300px;        /* you can tweak 480–520px for size */
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  overflow: hidden;
+  outline: 9px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
+  background: #000;
+  z-index: 2;
+}
+
+
+.track { display:flex; height:100%; will-change: transform; }
+.panel { min-width:100%; position:relative; display:grid; place-items:center; }
+.panel img { width:100%; height:100%; object-fit: cover; }
+
+.below-caption { max-width: min(68vw,520px); margin-top:.65rem; text-align:center; color:#f3f4f6; }
+.below-caption h6{ margin:0 0 .15rem; font-weight:800; color:#fff; text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+.below-caption p { margin:0; font-size:.95rem; color:rgba(255,255,255,.85); }
+
+.nav{ position:absolute; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%; border:0;
+  background:rgba(255,255,255,.92); box-shadow:0 6px 16px rgba(0,0,0,.3); font-size:22px; cursor:pointer; }
+.nav.prev{ left:8px; } .nav.next{ right:8px; }
+
+.dots{ position:absolute; left:0; right:0; bottom:10px; display:flex; justify-content:center; gap:8px; }
+.dot{ width:8px; height:8px; border-radius:999px; background:#d9d9d9; border:0; cursor:pointer; position:relative; overflow:hidden; }
+.dot.active{ background:#fff; width:18px; }
+.dot.active::after{ content:""; position:absolute; inset:0; width:0%; background:rgba(0,0,0,.25); animation:fill 3s linear forwards; border-radius:999px; }
+@keyframes fill{ to{ width:100%; } }
+.hero-hashtag{ text-align:center; margin-top:.55rem; color:#e5e7eb; font-size:.9rem; }
+
+/* Ticker (orange gradient per your request) */
+.ticker{ background: linear-gradient(90deg,#ff9966 0%, #ff5e62 100%); color:#fff; white-space:nowrap; overflow:hidden; }
+.ticker-track{ display:inline-block; animation:tickerMove 25s linear infinite; padding-block:.6rem; }
+.ticker span{ display:inline-flex; align-items:center; font-weight:600; padding:0 1.25rem; text-shadow:0 0 6px rgba(255,255,255,.35); }
+@keyframes tickerMove{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+
+/* Inline CTA (above services) */
+.cta-inline{
+  padding:.9rem 0; background: radial-gradient(1000px 600px at 50% -200px,#343a40,#0f1011);
+  border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06); color:#fff;
+}
+
+/* ===== SUPER THEME (navy + bright cards) ===== */
+.super-section{
+  position:relative; padding:72px 0; color:#fff;
+  background:
+    radial-gradient(1200px 900px at 90% -200px, rgba(255, 161, 39, 0.18), transparent 90%),
+    linear-gradient(180deg, #122fd3d0 100%, #080707 0%);
+  overflow:hidden; isolation:isolate;
+}
+.super-section::before, .super-section::after{
+  content:""; position:absolute; z-index:0; pointer-events:none; border-radius:28px;
+}
+.super-section::before{
+  right:-20vw; top:-12vh; width:64vw; height:64vw;
+  background: linear-gradient(135deg,#db0a03 0%,#0a63ff 100%); opacity:.35; transform:rotate(-16deg);
+}
+.super-section::after{
+  left:-30vw; bottom:-55vh; width:66vw; height:66vw;
+  background: linear-gradient(135deg,#0b1b7a 0%, #1032b0 100%); opacity:.45; transform:rotate(14deg);
+}
+.super-section .container{ position:relative; z-index:1; }
+
+.super-title{ text-transform:uppercase; letter-spacing:.4px; font-weight:900; color:#fff; text-align:center; margin-bottom:18px; }
+.super-sub{ text-align:center; color:rgba(255,255,255,.75); margin-top:-4px; margin-bottom:22px; }
+
+.super-grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:18px; }
+@media (min-width:768px){ .super-grid > .col{ grid-column: span 6; } }
+@media (min-width:992px){ .super-grid > .col{ grid-column: span 3; } }
+
+.super-card{
+  border-radius:20px; padding:22px 20px; border:3px solid rgba(255,255,255,.9);
+  box-shadow:0 14px 28px rgba(0,0,0,.25); background:#0a1d68; color:#fff;
+}
+.super-card h5{ text-transform:uppercase; font-weight:900; margin:0 0 6px; }
+.super-card p{ margin:0 0 10px; }
+.super-card ul{ margin:10px 0 0; padding:0; list-style:none; }
+.super-card li{ position:relative; padding-left:28px; margin:8px 0; font-weight:700; }
+.super-card li::before{
+  content:""; position:absolute; left:0; top:.1rem; width:18px; height:18px; border-radius:50%;
+  background:#24d366; box-shadow: inset 0 -2px 0 rgba(0,0,0,.18);
+}
+.super-card li::after{
+  content:""; position:absolute; left:5px; top:9px; width:8px; height:3px;
+  border-left:2px solid #073f1b; border-bottom:2px solid #073f1b; transform:rotate(-45deg);
+}
+.btn-outline-white{
+  display:inline-block; width:100%; text-align:center; border-radius:999px; padding:10px 14px; font-weight:800;
+  border:2px solid #fff; color:#0a1d68; background:#fff;
+}
+.price-line{ font-size:1.6rem; font-weight:900; margin:8px 0 12px; color:#0d0d0d; }
+
+/* Bright variants */
+.variant-orange{ background: linear-gradient(180deg,#ffb35b 0%, #ff7a00 100%); color:#161616; }
+.variant-pink  { background: linear-gradient(180deg,#ff9fc0 0%, #ff5e85 100%); color:#1a1a1a; }
+.variant-yellow{ background: linear-gradient(180deg,#ffe88c 0%, #ffd14d 100%); color:#101010; }
+.variant-outline{ background: linear-gradient(180deg,#102069 0%, #091651 100%); border:3px solid #fff; color:#fff; }
+
+/* ===== WhatsApp (mid-right) ===== */
+.whatsapp-fab{
+  position:fixed; top:79%; right:16px; transform:translateY(-50%);
+  width:56px; height:56px; border-radius:50%; background:#25D366;
+  display:grid; place-items:center; box-shadow:0 8px 24px rgba(0,0,0,.25); z-index:9999;
+  transition:all .2s ease;
+}
+.whatsapp-fab:hover{ transform: translateY(-50%) scale(1.1); box-shadow:0 12px 30px rgba(0,0,0,.3); }
+@media (max-width:992px){ .whatsapp-fab{ top:auto; bottom:16px; right:16px; transform:none; } }
+
+
+/* Boxed wrapper for each major section */
+.section-box {
+  border-radius: 28px;
+  padding: clamp(24px, 3vw, 40px);
+  margin: 40px auto;                 /* spacing around the box */
+  background: rgba(255,255,255,0.10); /* subtle glassy panel on blue bg */
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+}
