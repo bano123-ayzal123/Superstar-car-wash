@@ -30,12 +30,18 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   // ===== Slider =====
   slides = [
-    { src: 'assets/images/image1.jpg', alt: 'High-pressure rinse',  title: 'Touchless High-Pressure Rinse', copy: 'Safely lifts mud and grime without touching the paint.' },
-    { src: 'assets/images/image2.jpg', alt: 'Foam bath',            title: 'Active Foam Bath',              copy: 'pH-balanced foam encapsulates dirt for a swirl-free finish.' },
-    { src: 'assets/images/image3.jpg', alt: 'Underbody wash',       title: 'Under-Chassis Wash',            copy: 'Targets salt and road debris under your car.' },
-    { src: 'assets/images/image4.jpg', alt: 'Wax coat',             title: 'Wax & Sealant',                 copy: 'Hydrophobic shine that beads water for weeks.' },
-    { src: 'assets/images/image5.jpg', alt: 'Air dry',              title: 'Turbo Air Dry',                 copy: 'Powerful blowers minimize water spots—no wiping.' },
-    { src: 'assets/images/image6.jpg', alt: 'SUV premium program',  title: 'SUV Premium Cycle',             copy: 'Tuned coverage and dwell time for larger vehicles.' },
+    { src: 'assets/images/preswing.jpg', alt: 'Pre Swing Wash',  title: 'Pre Swing Wash',             copy: 'Loosens Tough Dirt for a Gentle Start' },
+    { src: 'assets/images/form.jpg', alt: 'Foam Cycle',  title: 'Foam Cycle',             copy: 'Rich Foam Blanket for Ultimate Shine.' },
+    { src: 'assets/images/highwash.jpg', alt: 'High-Pressure Wash',  title: 'High-Pressure Wash',             copy: 'Powerful Jets, Spotless Finish' },
+    { src: 'assets/images/dryer.jpg', alt: 'Dryer',  title: 'Dryer',             copy: 'Touchless Turbo Dry – Ready to Roll!' },
+    { src: 'assets/images/tyre.jpg', alt: 'Tyre Wash & Shine',  title: 'Tyre Wash & Shine',             copy: 'Deep rim clean and tyre shine for the perfect look' },
+    { src: 'assets/images/two wheeler.jpg', alt: 'PTwo-Wheeler Wash',  title: 'Two-Wheeler Wash',             copy: 'Quick Ride, Superstar Shine' },
+    { src: 'assets/images/interior.jpg', alt: 'Relaxing pleasant ambience',  title: 'Relaxing pleasant ambience',             copy: 'QLuxury Meets Clean' },
+    { src: 'assets/images/image1.jpg', alt: 'Your Car Deserves the Super Star Treatmen',  title: 'Your Car Deserves the Super Star Treatmen', copy: 'high-end wash environment designed for your comfort' },
+    { src: 'assets/images/image2.jpg', alt: 'Modern Design',            title: 'Modern Design',              copy: 'Where technology meets relaxation under brilliant illumination' },
+    { src: 'assets/images/image3.jpg', alt: '             Super Star Car Wash – Suncity, Bandlaguda Jagir',       title: '..................now in Suncity, Bandlaguda Jagir',            copy: '......................Relax in a pleasant ambience while your car shines' },
+    { src: 'assets/images/image6.jpg', alt: 'SBright Lights. Perfect Reflections',  title: 'Bright Lights. Perfect Reflections',             copy: 'TExperience a relaxing, high-end wash environment' },
+    { src: 'assets/images/underwash.jpg', alt: 'Sliding Underwash',  title: 'Sliding Underwash',             copy: 'Deep Clean From the Ground Up.' },
   ];
   currentIndex = 0;
   dotIndex = 0;
